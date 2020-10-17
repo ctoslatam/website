@@ -1,0 +1,31 @@
+---
+layout: base.njk
+tags:
+  - post
+---
+<header>
+  <h1 class="text-5xl md:text-6xl font-black pt-10 md:pt-30 pb-4 leading-tight">
+    {{ title }}
+  </h1>
+</header>
+{% include "nav.njk" %}
+<main class="content">
+  <div>
+    <em>{{ date | readableDate }} por {{ author.name }}</em>
+    &middot;
+    <span>Lectura de {{ content | readTime }} min</span>
+  </div>
+  <div class="mt-3 pb-5">
+    {% for tag in tags %}
+      {% if tag != "post" %}
+        <a class="inline-block" href="/tags/{{ tag }}">
+          <span class="text-xs rounded-full py-2 px-4 bg-gray-300">{{ tag }}</span>
+        </a>
+      {% endif %}
+    {% endfor %}
+  </div>
+  <article class="markdown">
+    {{ content | safe }}
+  </article>
+</main>
+{% include "footer.njk" %}

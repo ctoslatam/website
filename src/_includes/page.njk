@@ -1,0 +1,12 @@
+---
+layout: base.njk
+---
+
+<p class="text-5xl md:text-6xl font-black py-10 md:py-15 leading-tight">
+  {{ title if title else site.name }}
+</p>
+{% include "nav.njk" %}
+<main class="content">
+{{ content | safe }}
+</main>
+{% include "footer.njk" %}

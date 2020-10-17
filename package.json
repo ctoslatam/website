@@ -1,0 +1,47 @@
+{
+  "name": "ctos-latam-website",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "watch:eleventy": "eleventy --serve --quiet",
+    "watch:styles": "postcss styles/styles.css --o _tmp/styles.css --watch --verbose",
+    "start": "npm-run-all --parallel watch:*",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "prebuild:eleventy": "eleventy",
+    "build:eleventy": "ELEVENTY_PRODUCTION=true eleventy",
+    "build:styles": "NODE_ENV=production postcss styles/styles.css --o _tmp/styles.css",
+    "build": "npm-run-all prebuild:eleventy build:styles build:eleventy"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@11ty/eleventy": "^0.11.0",
+    "acorn": "^8.0.0",
+    "eslint": "^7.11.0",
+    "eslint-config-airbnb-base": "^14.2.0",
+    "eslint-config-standard": "^14.1.1",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-promise": "^4.2.1",
+    "eslint-plugin-standard": "^4.0.1",
+    "npm-run-all": "^4.1.5",
+    "postcss": "^8.1.2",
+    "postcss-cli": "^8.1.0"
+  },
+  "dependencies": {
+    "@11ty/eleventy-plugin-rss": "^1.0.9",
+    "@11ty/eleventy-plugin-syntaxhighlight": "^3.0.4",
+    "@mightyplow/eleventy-plugin-cache-buster": "^1.1.3",
+    "@quasibit/eleventy-plugin-sitemap": "^2.0.3",
+    "autoprefixer": "^10.0.1",
+    "html-minifier": "^4.0.0",
+    "luxon": "^1.25.0",
+    "markdown-it": "^12.0.1",
+    "markdown-it-anchor": "^6.0.0",
+    "postcss-clean": "^1.1.0",
+    "tailwindcss": "^1.9.5"
+  }
+}

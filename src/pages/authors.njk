@@ -1,0 +1,15 @@
+---
+title: Autores
+pagination:
+  data: collections.authors
+  size: Infinity
+  alias: authors
+permalink: autores/index.html
+---
+{% for author in authors %}
+  <article>
+    <h3>
+      <a href="/autores/{{ author | slug }}">{{ author }}</a>
+    </h3>
+  </article>
+{% endfor %}

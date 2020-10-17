@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="{{ locale if locale else site.locale }}">
+  <head>
+    <meta charset="utf-8">
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, viewport-fit=cove"
+      />
+    <title>{{ [title, " - ", site.name] | join if title else site.name }}</title>
+    <meta name="description" content="{{ description }}" />
+    <meta name="author" content="{{ author.name }}" />
+    <meta
+      property="og:title"
+      content="{{ [title, " - ", site.name] | join if title else site.name }}"
+      />
+    <meta property="og:description" content="{{ description }}" />
+    <meta property="og:locale" content="{{ locale if locale else site.locale }}" />
+    <meta property="og:site_name" content="CTOs Latam" />
+    {% if tags and "post" in tags %}
+      <meta property="og:type" content="article" />
+      <meta property="article:published_time" content="{{ date }}" />
+      <script type="application/ld+json">
+        {
+        "description": "{{ description }}",
+        "author": { "@type": "Person", "name": "{{ author.name }}" },
+        "@type": "BlogPosting",
+        "url": "{{ [site.url, page.url] | join }}",
+        "publisher": {
+          "@type": "Organization",
+          "name": "{{ site.name }}"
+        },
+        "headline": "{{ title }}",
+        "datePublished": "{{ date }}",
+        "mainEntityOfPage": {
+          "@type": "WebPage",
+          "@id": "{{ [site.url, page.url] | join }}"
+        },
+        "@context": "http://schema.org"
+      }
+      </script>
+    {% endif %}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.22.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" />
+    <link href="/assets/styles/styles.css" rel="stylesheet" />
+  </head>
+  <body class="relative min-h-screen max-w-screen-sm md:max-w-screen-md mx-auto px-8">
+    {{ content | safe }}
+  </body>
+</html>

@@ -1,0 +1,37 @@
+---
+permalink: /
+pagination:
+  data: collections.post
+  size: 2
+  reverse: true
+  alias: posts
+---
+{% for post in posts %}
+  <div class="py-4">
+    <div>
+      <h2 class="inline">
+        <a class="text-black" href="{{ post.url }}">{{ post.data.title }}</a>
+      </h2>
+      <span class="text-2xl">
+        &middot; lectura de {{ post.templateContent | readTime }} min
+      </span>
+    </div>
+    <em>Publicado el {{ post.date | readableDate }} por {{ post.data.author.name }}</em>
+    <p>{{ post.data.page.excerpt }}...
+      <br />
+      <a class="font-semibold" href="{{ post.url }}">
+        Leer más
+      </a>
+    </p>
+    <div>
+      {% for tag in post.data.tags %}
+        {% if tag != "post" %}
+          <a class="inline-block" href="/tags/{{ tag }}">
+            <span class="text-xs rounded-full py-2 px-4 bg-gray-300">{{ tag }}</span>
+          </a>
+        {% endif %}
+      {% endfor %}
+    </div>
+  </div>
+{% endfor %}
+{% include "paginator.njk" %}
